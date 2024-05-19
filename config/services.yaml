@@ -19,6 +19,16 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
-
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+    App\Users\Controller\:
+        resource: '../src/Users/Controller/'
+        tags: ['controller.service_arguments']
+    App\Users\Admin\Controller\:
+        resource: '../src/Users/Admin/Controller/'
+        tags: [ 'controller.service_arguments' ]
+    App\EventListener\CorsListener:
+        tags:
+            - { name: kernel.event_listener, event: kernel.response, method: onKernelResponse }
+            - { name: kernel.event_listener, event: kernel.exception, method: onKernelException }
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

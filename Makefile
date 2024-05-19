@@ -13,6 +13,11 @@ stop:
 up:
 	${DOCKER_COMPOSE} up -d --remove-orphans
 
+build_frontend:
+	${DOCKER_COMPOSE} build frontend
+build_nginx:
+	${DOCKER_COMPOSE} build nginx
+
 down:
 	${DOCKER_COMPOSE} down
 

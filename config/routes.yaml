@@ -6,3 +6,15 @@ controllers:
 app_mark_quest_completed:
     path: /user/{userId}/quest/{questId}/complete
     controller: App\Controller\UserController::markQuestCompleted
+api_refresh_token:
+    path: /api/auth/token/refresh
+
+api_login_check:
+    path: /api/auth/token/login
+
+users:
+    resource: ../src/Users/Controller/
+    type: annotation
+admin:
+    resource: ../src/Users/Admin/Controller/
+    type: annotation
