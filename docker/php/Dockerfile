@@ -18,7 +18,7 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; \
 COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Postgres
-RUN apk add --no-cache libpq-dev && docker-php-ext-install pdo_mysql
+RUN apk add --no-cache libpq-dev && docker-php-ext-install pdo_pgsql
 
 # Configure non-root user.
 ARG PUID=1000
@@ -43,16 +43,17 @@ WORKDIR /var/www
 
 # Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-#ARG BUILD_MODE=dev
 
-#RUN if [ ${BUILD_MODE} = dev ]; \
-#    then \
+ARG BUILD_MODE=dev
+
+RUN if [ ${BUILD_MODE} = dev ]; \
+    then \
 RUN export COMPOSER_ALLOW_SUPERUSER=1; \
     composer install --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader; \
-    chown -R www-data:www-data /var/www/vendor/;
-#    else \
-#      composer install --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader; \
-#    fi;
+    chown -R www-data:www-data /var/www/vendor/; \
+    else \
+      composer install --no-dev --no-interaction --no-progress --no-scripts --optimize-autoloader; \
+    fi;
 
 EXPOSE 8080
 
