@@ -5,7 +5,7 @@ services:
         container_name: php
         build:
             context: ./..
-            dockerfile: ./docker/php/Dockerfile
+            dockerfile: ../Dockerfile
             args:
                 - PUID=${PUID}
                 - PGID=${PGID}

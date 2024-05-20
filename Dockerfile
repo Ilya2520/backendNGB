@@ -13,19 +13,19 @@ RUN if [ ${INSTALL_XDEBUG} = true ]; then \
       pecl install xdebug && docker-php-ext-enable xdebug; \
     fi;
 
-COPY ./docker/php/xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Postgres
 RUN apk add --no-cache libpq-dev && docker-php-ext-install pdo_pgsql
 
 # Nginx
 RUN apk add --update --no-cache nginx
-COPY ./docker/php/nginx.conf /etc/nginx/
+COPY ./nginx.conf /etc/nginx/
 RUN chown -Rf www-data:www-data /var/lib/nginx
 
 # Supervisor
 RUN apk add --no-cache supervisor
-COPY ./docker/php/supervisord.conf /etc/supervisord.conf
+COPY ./supervisord.conf /etc/supervisord.conf
 
 # Source code
 RUN chown www-data:www-data /var/www
