@@ -31,5 +31,4 @@ docker/.env
 ###< phpunit/phpunit ###
 
 ###> lexik/jwt-authentication-bundle ###
-/config/jwt/*.pem
 ###< lexik/jwt-authentication-bundle ###
