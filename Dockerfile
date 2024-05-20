@@ -27,9 +27,7 @@ RUN chown -Rf www-data:www-data /var/lib/nginx
 RUN apk add --no-cache supervisor
 COPY ./supervisord.conf /etc/supervisord.conf
 
-# Source code
-RUN chown www-data:www-data /var/www
-COPY --chown=www-data:www-data ./ /var/www
+COPY . /var/www/
 WORKDIR /var/www
 
 # Composer
