@@ -1,5 +1,4 @@
 /.idea
-.env
 docker/.env
 /.env.local
 /.env.local.php
@@ -10,7 +9,6 @@ docker/.env
 
 .deptrac.cache
 ###> symfony/framework-bundle ###
-/.env
 /.env.local
 /.env.local.php
 /.env.*.local
