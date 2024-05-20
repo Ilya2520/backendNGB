@@ -48,4 +48,4 @@ RUN if [ ${BUILD_MODE} = dev ]; then \
 
 EXPOSE 8080
 
-CMD ["/bin/sh", "./docker/php/run.sh"]
+CMD ["/bin/sh", "./run.sh"]
