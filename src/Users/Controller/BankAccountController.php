@@ -3,7 +3,7 @@
 namespace App\Users\Controller;
 
 use App\Entity\BankAccount;
-use App\Entity\User;
+use App\Entity\User1;
 use App\Repository\BankAccountRepository;
 use App\Repository\BankAccountTypeRepository;
 use App\Users\Enum\BankAccountStatusEnum;
@@ -136,7 +136,7 @@ class BankAccountController extends AbstractController
         return in_array($status, BankAccountStatusEnum::STATUSES);
     }
     
-    private function isOwnerOrAdmin(BankAccount $bankAccount, User $user): bool
+    private function isOwnerOrAdmin(BankAccount $bankAccount, User1 $user): bool
     {
         return $bankAccount->getUser() === $user || in_array('ROLE_ADMIN', $user->getRoles());
     }

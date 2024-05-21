@@ -5,7 +5,7 @@ namespace App\Users\Admin\Controller;
 
 use App\Entity\BankAccount;
 use App\Entity\Transaction;
-use App\Entity\User;
+use App\Entity\User1;
 use App\Repository\BankAccountRepository;
 use App\Repository\TalkRepository;
 use App\Repository\TransactionRepository;
@@ -222,7 +222,7 @@ class AdminController extends AbstractController
             return new JsonResponse(['message' => 'status is uncorrected'], 400);
         }
         
-        /** @var User|BankAccount|Transaction $entity */
+        /** @var User1|BankAccount|Transaction $entity */
         $entity = $repository->find($entityId);
         
         if ($entity === null) {

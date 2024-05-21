@@ -3,13 +3,13 @@
 namespace App\Users\Factory;
 
 use App\Entity\Talk;
-use App\Entity\User;
+use App\Entity\User1;
 use App\Users\Enum\TalkEnumStatuses;
 use DateTimeImmutable;
 
 class TalkFactory
 {
-    public function create(User $user): Talk
+    public function create(User1 $user): Talk
     {
         $talk = new Talk();
         $talk->setUser($user);

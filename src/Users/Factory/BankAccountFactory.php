@@ -4,13 +4,13 @@ namespace App\Users\Factory;
 
 use App\Entity\BankAccount;
 use App\Entity\BankAccountType;
-use App\Entity\User;
+use App\Entity\User1;
 use App\Users\Enum\BankAccountStatusEnum;
 
 class BankAccountFactory
 {
     
-    public function create(User $user, BankAccountType $bankAccountType, ?array $info): BankAccount
+    public function create(User1 $user, BankAccountType $bankAccountType, ?array $info): BankAccount
     {
         $bankAccount = new BankAccount();
         

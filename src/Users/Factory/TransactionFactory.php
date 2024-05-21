@@ -4,7 +4,7 @@ namespace App\Users\Factory;
 
 use App\Entity\BankAccount;
 use App\Entity\Transaction;
-use App\Entity\User;
+use App\Entity\User1;
 use App\Users\Enum\TransactionStatusEnum;
 
 class TransactionFactory

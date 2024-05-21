@@ -2,7 +2,7 @@
 
 namespace App\Users\Factory;
 
-use App\Entity\User;
+use App\Entity\User1;
 use App\Users\Interface\UserPasswordHasherInterface;
 
 class UserFactory
@@ -11,11 +11,10 @@ class UserFactory
     {
     }
     
-    public function create(int $id, string $email, string $password): User
+    public function create(string $email, string $password): User1
     {
-        $user = new User();
+        $user = new User1();
         $user->setEmail($email);
-        $user->setId($id+1);
         $user->setPassword($password, $this->passwordHasher);
         $user->setUsername($email);
         $user->setUsername($email);

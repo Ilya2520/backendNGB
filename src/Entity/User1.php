@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Attribute\Ignore;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-class User implements AuthUserInterface
+class User1 implements AuthUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -59,7 +59,7 @@ class User implements AuthUserInterface
     /**
      * @var Collection<int, BankAccount>
      */
-    #[ORM\OneToMany(targetEntity: BankAccount::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: BankAccount::class, mappedBy: 'user1')]
     #[Ignore]
     private Collection $bankAccounts;
 

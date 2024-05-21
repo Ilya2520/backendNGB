@@ -2,7 +2,7 @@
 
 namespace App\Users\Controller;
 
-use App\Entity\User;
+use App\Entity\User1;
 use App\Users\Factory\UserFactory;
 use App\Users\Interface\UserFetcherInterface;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -73,8 +73,7 @@ class UserLogin extends AbstractController
         
         try {
 
-            $id = $this->entityManager->getRepository(User::class)->count();
-            $user = $this->userFactory->create($id,$email, $password);
+            $user = $this->userFactory->create($email, $password);
             
             $this->entityManager->persist($user);
             $this->entityManager->flush();

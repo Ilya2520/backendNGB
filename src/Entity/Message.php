@@ -20,10 +20,10 @@ class Message
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $fromUser = null;
+    private ?User1 $fromUser = null;
 
     #[ORM\ManyToOne]
-    private ?User $toUser = null;
+    private ?User1 $toUser = null;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $sendAt = null;
@@ -48,24 +48,24 @@ class Message
         return $this;
     }
 
-    public function getFromUser(): ?User
+    public function getFromUser(): ?User1
     {
         return $this->fromUser;
     }
 
-    public function setFromUser(?User $fromUser): static
+    public function setFromUser(?User1 $fromUser): static
     {
         $this->fromUser = $fromUser;
 
         return $this;
     }
 
-    public function getToUser(): ?User
+    public function getToUser(): ?User1
     {
         return $this->toUser;
     }
 
-    public function setToUser(?User $toUser): static
+    public function setToUser(?User1 $toUser): static
     {
         $this->toUser = $toUser;
 
