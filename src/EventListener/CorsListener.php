@@ -50,7 +50,7 @@ final class CorsListener implements EventSubscriberInterface
         if ($response) {
             $response->headers->set('Access-Control-Allow-Origin', 'https://frontendngb.onrender.com');
             $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-            $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+            $response->headers->set('Access-Control-Allow-Headers', 'Origin, X-Api-Key, X-Requested-With, Content-Type, Accept, Authorization');
             $response->headers->set('Access-Control-Allow-Credentials', 'true'); // Вот это важно
         }
     }

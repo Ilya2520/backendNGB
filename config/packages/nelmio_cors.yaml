@@ -22,5 +22,6 @@ nelmio_cors:
         allow_headers: [ 'Accept','Authorization','Cache-Control','Content-Type','DNT','If-Modified-Since','Keep-Alive','Origin','User-Agent','X-Requested-With' ]
         expose_headers: [ 'Authorization' ]
         max_age: 3600
+        allow_credentials: true
     paths:
         '^/': ~
