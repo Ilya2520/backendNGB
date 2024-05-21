@@ -37,8 +37,8 @@ class JWTAuthenticationSuccessListener
                 time() + $this->tokenLifetime, // expiration
                 '/', // path
                 null, // domain, null means that Symfony will generate it on its own.
-                true, // secure
-                true, // httpOnly
+                false, // secure
+                false, // httpOnly
                 false, // raw
                 'lax' // same-site parameter, can be 'lax' or 'strict'.
             )
