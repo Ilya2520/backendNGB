@@ -21,7 +21,7 @@ class BankAccount
     #[ORM\ManyToOne(inversedBy: 'bankAccounts')]
     #[ORM\JoinColumn(nullable: false)]
     #[Ignore]
-    private ?User $user = null;
+    private ?User1 $user = null;
 
     #[ORM\Column(nullable: true)]
     private ?array $information = null;
@@ -49,12 +49,12 @@ class BankAccount
         return $this;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?User1
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): static
+    public function setUser(?User1 $user): static
     {
         $this->user = $user;
 

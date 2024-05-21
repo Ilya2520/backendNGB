@@ -18,7 +18,7 @@ class Talk
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $User = null;
+    private ?User1 $User = null;
     
     #[ORM\Column(nullable: true)]
     private ?\DateTimeImmutable $updatedAt = null;
@@ -45,7 +45,7 @@ class Talk
     private ?bool $isSolved = null;
 
     #[ORM\ManyToOne]
-    private ?User $takedBy = null;
+    private ?User1 $takedBy = null;
 
     public function __construct()
     {
@@ -57,12 +57,12 @@ class Talk
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): ?User1
     {
         return $this->User;
     }
 
-    public function setUser(?User $User): static
+    public function setUser(?User1 $User): static
     {
         $this->User = $User;
 
@@ -171,12 +171,12 @@ class Talk
         return $this;
     }
 
-    public function getTakedBy(): ?User
+    public function getTakedBy(): ?User1
     {
         return $this->takedBy;
     }
 
-    public function setTakedBy(?User $takedBy): static
+    public function setTakedBy(?User1 $takedBy): static
     {
         $this->takedBy = $takedBy;
 

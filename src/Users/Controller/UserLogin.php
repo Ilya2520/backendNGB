@@ -2,6 +2,7 @@
 
 namespace App\Users\Controller;
 
+use App\Entity\User1;
 use App\Users\Factory\UserFactory;
 use App\Users\Interface\UserFetcherInterface;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
@@ -71,14 +72,13 @@ class UserLogin extends AbstractController
         }
         
         try {
+
             $user = $this->userFactory->create($email, $password);
             
             $this->entityManager->persist($user);
             $this->entityManager->flush();
         } catch (UniqueConstraintViolationException $e) {
             return $this->json(['message' => 'Email already exists'], 400);
-        } catch (\Exception $e) {
-            return $this->json(['message' => 'An error occurred while registering'], 500);
         }
         // Возвращаем ответ клиенту
         return $this->json(['message'=> 'Successful registration']);

@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Attribute\Ignore;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ORM\UniqueConstraint(name: 'UNIQ_IDENTIFIER_EMAIL', fields: ['email'])]
-class User implements AuthUserInterface
+class User1 implements AuthUserInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -24,10 +24,7 @@ class User implements AuthUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-    /**
-     * @var list<string> The user roles
-     */
-    #[ORM\Column]
+    #[ORM\Column(type: 'json',  nullable: true)]
     private array $roles = [];
 
     /**
@@ -62,7 +59,7 @@ class User implements AuthUserInterface
     /**
      * @var Collection<int, BankAccount>
      */
-    #[ORM\OneToMany(targetEntity: BankAccount::class, mappedBy: 'user')]
+    #[ORM\OneToMany(targetEntity: BankAccount::class, mappedBy: 'user1')]
     #[Ignore]
     private Collection $bankAccounts;
 
@@ -74,6 +71,13 @@ class User implements AuthUserInterface
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getEmail(): string
@@ -100,8 +104,6 @@ class User implements AuthUserInterface
 
     /**
      * @see UserInterface
-     *
-     * @return list<string>
      */
     public function getRoles(): array
     {
@@ -112,10 +114,7 @@ class User implements AuthUserInterface
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 

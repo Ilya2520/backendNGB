@@ -2,7 +2,7 @@
 
 namespace App\Users\Serializer;
 
-use App\Entity\User;
+use App\Entity\User1;
 
 class UserSerializer
 {
@@ -10,7 +10,7 @@ class UserSerializer
     {
     }
     
-    public function forUser(User $user): array
+    public function forUser(User1 $user): array
     {
         return [
             'id' => $user->getUserId(),
@@ -26,14 +26,14 @@ class UserSerializer
     }
     
     
-    public function forAdmin(User $user): array
+    public function forAdmin(User1 $user): array
     {
         return [
         
         ];
     }
     
-    public function forMessages(?User $user): ?string
+    public function forMessages(?User1 $user): ?string
     {
         if (is_null($user)){
             return null;
