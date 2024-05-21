@@ -27,10 +27,10 @@
         "symfony/mailer": "6.*",
         "symfony/messenger": "^6.4",
         "symfony/mime": "^6.4",
-        "symfony/runtime": "^6.4",
+        "symfony/runtime": "6.*",
         "symfony/serializer": "^6.4",
         "symfony/twig-bundle": "^6.4",
-        "symfony/uid": "^6.4",
+        "symfony/uid": "6.*",
         "symfony/validator": "^6.4",
         "symfony/yaml": "^6.4",
         "webmozart/assert": "^1.11"

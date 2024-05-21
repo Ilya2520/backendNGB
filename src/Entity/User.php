@@ -24,10 +24,7 @@ class User implements AuthUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-    /**
-     * @var list<string> The user roles
-     */
-    #[ORM\Column]
+    #[ORM\Column(type: 'json',  nullable: true)]
     private array $roles = [];
 
     /**
@@ -76,6 +73,13 @@ class User implements AuthUserInterface
         return $this->id;
     }
 
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getEmail(): string
     {
         return $this->email;
@@ -100,8 +104,6 @@ class User implements AuthUserInterface
 
     /**
      * @see UserInterface
-     *
-     * @return list<string>
      */
     public function getRoles(): array
     {
@@ -112,10 +114,7 @@ class User implements AuthUserInterface
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
-    public function setRoles(array $roles): static
+    public function setRoles(array $roles): self
     {
         $this->roles = $roles;
 
