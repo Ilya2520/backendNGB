@@ -33,18 +33,20 @@ final class CorsListener implements EventSubscriberInterface
     
     public function onKernelResponse(ResponseEvent $event): void
     {
-        //$this->logger->info('CorsListener: onKernelResponse method called');
-        // Don't do anything if it's not the master request.
-        if (!$event->isMainRequest()) {
-            return;
-        }
-        
-        $response = $event->getResponse();
-        if ($response) {
-            $response->headers->set('Access-Control-Allow-Origin', 'https://frontendngb.onrender.com');
-            $response->headers->set('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-            $response->headers->set('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-            $response->headers->set('Access-Control-Allow-Credentials', 'true'); // Вот это важно
+        if ($event->getRequest()->getMethod() === 'OPTIONS') {
+            $event->setResponse(
+                new Response('', 204, [
+                    'Access-Control-Allow-Origin' => '*',
+                    'Access-Control-Allow-Credentials' => 'true',
+                    'Access-Control-Allow-Methods' => 'GET, POST, PUT, DELETE, OPTIONS',
+                    'Access-Control-Allow-Headers' => 'DNT, X-User-Token, Keep-Alive, User-Agent, 
+                        X-Requested-With, If-Modified-Since, Cache-Control, Content-Type Authorization, Accept-Encoding',
+                    'Access-Control-Max-Age' => 1728000,
+                    'Content-Type' => 'text/plain charset=UTF-8',
+                    'Content-Length' => 0
+                ])
+            );
+            return ;
         }
     }
     
